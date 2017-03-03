@@ -1,0 +1,4 @@
+*.o
+build-oslab1-2-unknown-Debug/*
+qtlab/*
+*.user
