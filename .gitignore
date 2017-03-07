@@ -2,3 +2,10 @@
 build-oslab1-2-unknown-Debug/*
 qtlab/*
 *.user
+*.o
+*.ko
+*.order
+*.symvers
+*.cmd
+.tmp_versions/*
+mymodule.mod.c

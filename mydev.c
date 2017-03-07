@@ -6,13 +6,12 @@
 #include <linux/errno.h>
 #include <linux/init.h>
 #include <linux/sched.h>
-#include <asm/uacess.h>
+#include <linux/uaccess.h>
 #include <asm/io.h>
-#include <asm/system.h>
 #ifndef MAXSIZE
 #define MAXSIZE 4096
 #endif
-char data[MAXSIZE]
+char data[MAXSIZE];
 unsigned int cur_prt, devnum = -1;
 
 int ch_open(struct inode *inode, struct file *filep) {//open
@@ -39,7 +38,7 @@ static ssize_t ch_read(struct file *filep, char __user *buf, size_t size, loff_t
     } else {
         *ppos += count;
         ret = count;
-        printk(KERN_INFO "read %d bytes from %d\n", count, p);
+        printk("read %d bytes from %ld\n", count, p);
     }
     return ret;
 }
@@ -58,7 +57,7 @@ static ssize_t ch_write(struct file *filep, const char __user *buf, size_t size,
     } else {
         *ppos += count;
         ret = count;
-        printk(KERN_INFO "written %d bytes from %d\n", count, p);
+        printk("written %d bytes from %ld\n", count, p);
     }
     return ret;
 }
@@ -71,17 +70,17 @@ static const struct file_operations ch_fops = {
     .release = ch_release,
 };
 
-static int init_module(void) {
+int init_module(void) {
     devnum = register_chrdev(0, "mydev", &ch_fops);
-    if (devnum) {
-        printk("Succeed!\n");
+    if (devnum == -1) {
+        printk("Falid!\n");
     } else {
-        printk("Faild!\n");
+        printk("Succeed!\n");
     }
-    return devnum;
+    return 0;
 }
 
-static int cleanup_module(void) {
+void cleanup_module(void) {
     if (devnum>=0) {
         unregister_chrdev(devnum, "mydev");
     }
