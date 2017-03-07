@@ -1,11 +1,13 @@
 *.o
 build-oslab1-2-unknown-Debug/*
 qtlab/*
+.tmp_versions/*
+**/node_modules
+nodejs/*
 *.user
 *.o
 *.ko
 *.order
 *.symvers
 *.cmd
-.tmp_versions/*
 mymodule.mod.c

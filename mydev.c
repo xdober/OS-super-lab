@@ -24,9 +24,9 @@ int ch_release(struct inode *inode, struct file *filep) {//close
 }
 
 static ssize_t ch_read(struct file *filep, char __user *buf, size_t size, loff_t *ppos) {
-    unsigned long p = *ppos;
+    unsigned long p    = *ppos;
     unsigned int count = size;
-    int ret = 0;
+    int ret            = 0;
     if (p>MAXSIZE) {
         return 0;
     }
@@ -37,15 +37,15 @@ static ssize_t ch_read(struct file *filep, char __user *buf, size_t size, loff_t
         ret = -EFAULT;
     } else {
         *ppos += count;
-        ret = count;
+        ret    = count;
         printk("read %d bytes from %ld\n", count, p);
     }
     return ret;
 }
 static ssize_t ch_write(struct file *filep, const char __user *buf, size_t size, loff_t *ppos) {
-    unsigned long p = *ppos;
+    unsigned long p    = *ppos;
     unsigned int count = size;
-    int ret = 0;
+    int ret            = 0;
     if (p>MAXSIZE) {
         return 0;
     }
@@ -56,17 +56,17 @@ static ssize_t ch_write(struct file *filep, const char __user *buf, size_t size,
         ret = -EFAULT;
     } else {
         *ppos += count;
-        ret = count;
+        ret    = count;
         printk("written %d bytes from %ld\n", count, p);
     }
     return ret;
 }
 
 static const struct file_operations ch_fops = {
-    .owner = THIS_MODULE,
-    .read = ch_read,
-    .write = ch_write,
-    .open = ch_open,
+    .owner   = THIS_MODULE,
+    .read    = ch_read,
+    .write   = ch_write,
+    .open    = ch_open,
     .release = ch_release,
 };
 
