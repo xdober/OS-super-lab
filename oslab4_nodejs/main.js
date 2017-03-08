@@ -24,13 +24,3 @@ app.on('activate', () => {
         creatWindow();
     }
 });
-
-const ipcMain = require('electron').ipcMain;
-ipcMain.on('asynchronous-message', function(event, arg) {
-    console.log(arg);
-    event.sender.send('asynchronous-reply', 'pong');
-});
-ipcMain.on('synchronous-message', function(event, arg) {
-    console.log(arg);
-    event.returnValue = 'pong2';
-});

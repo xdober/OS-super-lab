@@ -1,12 +1,12 @@
+body {
+    min-width: 812px;
+}
 .tabs-left {
   border-bottom: none;
   padding-top: 2px;
 }
 .tabs-left {
-  border-right: 1px solid #ddd;
-}
-.tabs-right {
-  border-left: 1px solid #ddd;
+  border-right: none;
 }
 .tabs-left>li {
   float: none;
@@ -15,12 +15,14 @@
 .tabs-left>li {
   margin-right: -1px;
   background-color: #34a853;
+  font-size: 2em;
 }
 .tabs-left>li.active>a,
 .tabs-left>li.active>a:hover,
 .tabs-left>li.active>a:focus {
   border-bottom-color: #ddd;
   border-right-color: transparent;
+  transition: background 0.5s, color 0.5s;
 }
 
 .tabs-left>li>a {
@@ -28,8 +30,43 @@
   margin-right: 0;
   display:block;
   color: #ffffff;
+  transition: background 0.5s, color 0.5s;
 }
 
 .tabs-left>li>a:hover {
   color: #000000;
+  transition: background 0.5s, color 0.5s;
+}
+
+.tab-pane>p{
+    font-size: 1.5em;
+}
+
+.tab-content {
+    margin-top: 1.5em;
+}
+#canvasContener2 {
+    max-width: 500px;
+    overflow: hidden;
+    position: relative;
+    left: 10;
+    top: -315px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+
+}
+#axis {
+    position: relative;;
+    left: 0;
+    top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+#canvasContener {
+    max-height: 400px;
+    overflow-y: hidden;
 }
