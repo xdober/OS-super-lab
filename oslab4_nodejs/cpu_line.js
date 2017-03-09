@@ -4,11 +4,13 @@ function strokCpu() {
     context.beginPath();
     var usg = document.getElementById("cpuusage").innerHTML, count = 0, width = 510;
     context.moveTo(10,300);
+    var objj = document.getElementById("canvasContener2");
     setInterval(function() {
         usg = document.getElementById("cpuusage").innerHTML;
         context.lineTo(count + 10 ,300-usg*3);
         if (count > 490) {
-            document.getElementById("canvasContener2").style.overflow = "auto";
+            objj.style.overflow = "auto";
+            objj.scrollLeft += 10;
         }
         count = count + 10;
         context.strokeStyle = "#4285f4";

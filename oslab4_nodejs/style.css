@@ -111,3 +111,6 @@ body {
 #pid, #mem, #pName, #stu {
     transition: background 0.3s;
 }
+::-webkit-scrollbar {
+    width: 0;
+}

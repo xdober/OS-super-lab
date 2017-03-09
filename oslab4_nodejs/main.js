@@ -8,7 +8,7 @@ function creatWindow() {
         height: 640,
         resizable: false});
     mainWindow.loadURL(`file://${__dirname}/index.html`);
-    mainWindow.webContents.openDevTools();
+//    mainWindow.webContents.openDevTools();
     mainWindow.setMenu(null);
     mainWindow.on('closed',() => {
         mainWindow = null;
