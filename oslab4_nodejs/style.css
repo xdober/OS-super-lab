@@ -67,7 +67,8 @@ body {
     overflow: hidden;
     position: relative;
     left: 10;
-    top: -315px;
+    top: -311px;
+    left: 9px;
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
@@ -98,11 +99,16 @@ body {
 }
 .div-table>li {
     line-height: 1.8em;
-    border-bottom: 1px solid;
 
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     border-color: #36bd51;
-    background-color: #eeeeee;
+    background-color: #f2f2f2;
+    transition: color 0.2s, background 0.2s;
+}
+.div-table>li:hover {
+    background-color: #36bd51;
+    color: #ffffff;
+    transition: color 0.2s, background 0.2s;
 }
 #pid:hover, #mem:hover, #pName:hover, #stu:hover {
     background-color: #34a853;
@@ -111,6 +117,6 @@ body {
 #pid, #mem, #pName, #stu {
     transition: background 0.3s;
 }
-::-webkit-scrollbar {
+div::-webkit-scrollbar {
     width: 0;
 }

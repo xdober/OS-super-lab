@@ -2,8 +2,8 @@ function strokCpu() {
     var canv = document.getElementById("cpuCanvas");
     var context = canv.getContext("2d");
     context.beginPath();
-    var usg = document.getElementById("cpuusage").innerHTML, count = 0, width = 510;
-    context.moveTo(10,300);
+    var usg = document.getElementById("cpuusage").innerHTML, count = -10, width = 510;
+    context.moveTo(0,300);
     var objj = document.getElementById("canvasContener2");
     setInterval(function() {
         usg = document.getElementById("cpuusage").innerHTML;
@@ -27,14 +27,14 @@ function strokAxis() {
     context.moveTo(10,0);
     context.lineTo(15,5);
     context.moveTo(10,300);
-    context.lineTo(490,300);
-    context.lineTo(485,305);
-    context.moveTo(490,300);
-    context.lineTo(485,295);
+    context.lineTo(510,300);
+    context.lineTo(505,305);
+    context.moveTo(510,300);
+    context.lineTo(505,295);
     context.font = "bold 16px";
     context.fillStyle = "#555";
     context.fillText("usage %", 15, 10);
-    context.fillText("time", 480, 290);
+    context.fillText("time", 490, 290);
     var i = 0;
     while (i<100) {
         context.fillText(100-10*i, 0, 30*i);
