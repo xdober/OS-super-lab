@@ -13,7 +13,8 @@ function memStringToValue(memValue, datain) {
     var memStringAvaib = arrStringMem[2].split(/ +/);
     memValue.total = Number(memStringTotal[1]);
     memValue.avalable = Number(memStringAvaib[1]);
-    memValue.usage = (1- (memValue.total - memValue.avalable)/memValue.total)*100.0;
+    memValue.usage = ((memValue.total - memValue.avalable)/memValue.total)*100.0;
+    memValue.usage = memValue.usage.toFixed(3);
 }
 function calMem() {
     setInterval(function(){

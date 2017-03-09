@@ -30,6 +30,7 @@ function calCPU() {
             i = i%2;
         });
         cpuusage = (cpuValue[1].total != cpuValue[0].total) ? (1 - (cpuValue[1].idle - cpuValue[0].idle)/(cpuValue[1].total - cpuValue[0].total))*100.0 : 0;
+        cpuusage = cpuusage.toFixed(3);
         document.getElementById("cpuusage").innerHTML = cpuusage;
     },1000);
 

@@ -1,3 +1,6 @@
+html {
+    background-color: #eeeeee;
+}
 body {
     min-width: 812px;
 }
@@ -38,8 +41,19 @@ body {
   transition: background 0.5s, color 0.5s;
 }
 
-.tab-pane>p{
+.div-table {
+    max-height: 550px;
+    overflow-y: auto;
+}
+
+.tab-pane>p {
+    font-size: 1.2em;
+    line-height: 1.3em;
+    color: #555;
+}
+.tab-pane>p>span{
     font-size: 1.5em;
+    color: #34a853;
 }
 
 .tab-content {
@@ -69,4 +83,21 @@ body {
 #canvasContener {
     max-height: 400px;
     overflow-y: hidden;
+}
+.div-table-title {
+    background-color: #36bd51;
+    font-size: 1.1em;
+    color: #eeeeee;
+    line-height: 2em;
+}
+.clear-float {
+    clear: both;
+}
+.new {
+    line-height: 1.8em;
+    border-bottom: 1px solid;
+
+    margin-bottom: 2px;
+    border-color: #36bd51;
+    background-color: #eeeeee;
 }

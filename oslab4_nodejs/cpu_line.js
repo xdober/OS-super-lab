@@ -9,7 +9,6 @@ function strokCpu() {
         context.lineTo(count + 10 ,300-usg*3);
         if (count > 490) {
             document.getElementById("canvasContener2").style.overflow = "auto";
-//            document.getElementById("cpuCanvas").width += 10;
         }
         count = count + 10;
         context.strokeStyle = "#4285f4";
