@@ -58,7 +58,7 @@ static ssize_t ch_write(struct file *filep, const char __user *buf, size_t size,
     } else {
         *ppos += count;
         ret = count;
-        printk(KERN_INFO "written %d bytes from %d\n", count, p);
+        printk(KERN_INFO "write %d bytes from %d\n", count, p);
     }
     return ret;
 }

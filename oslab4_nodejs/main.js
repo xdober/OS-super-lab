@@ -5,7 +5,8 @@ const {BrowserWindow} = electron;
 let mainWindow;
 function creatWindow() {
     mainWindow = new BrowserWindow({width: 1100,
-        height: 640});
+        height: 640,
+        resizable: false});
     mainWindow.loadURL(`file://${__dirname}/index.html`);
     mainWindow.webContents.openDevTools();
     mainWindow.setMenu(null);

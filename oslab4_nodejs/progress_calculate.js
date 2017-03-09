@@ -36,8 +36,10 @@ function openfile(nameArry) {
 function calPrg() {
     var nameArry = []
     setInterval(function() {
+        nameArry.splice(0,nameArry.length);
         nameArry = opendir();
         count = 0;
+        prgValueInfo.splice(0,prgValueInfo.length);
         openfile(nameArry);
         prgValueInfo.sort(by(sortflag?"mem":"pid"));
         updateDOM();

@@ -2,7 +2,7 @@ html {
     background-color: #eeeeee;
 }
 body {
-    min-width: 812px;
+    min-width: 1072px;
 }
 .tabs-left {
   border-bottom: none;
@@ -100,4 +100,8 @@ body {
     margin-bottom: 2px;
     border-color: #36bd51;
     background-color: #eeeeee;
+}
+#pid:hover, #mem:hover {
+    background-color: #34a853;
+    cursor:pointer;
 }
