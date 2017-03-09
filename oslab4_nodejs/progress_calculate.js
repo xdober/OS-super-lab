@@ -1,5 +1,5 @@
 var prgFs = require('fs');
-var count = 0, prgValueInfo = [], sortflag = 1;
+var count = 0, prgValueInfo = [], sortSelect = "mem", UorD = 0, UorD1 = 0, UorD2 = 0, UorD3 = 0, UorD4 = 0;
 function creatPrgObj() {
     var oTemp = new Object;
     oTemp.pName = "name";
@@ -33,43 +33,7 @@ function openfile(nameArry) {
      });
 }
 
-function calPrg() {
-    var nameArry = []
-    setInterval(function() {
-        nameArry.splice(0,nameArry.length);
-        nameArry = opendir();
-        count = 0;
-        prgValueInfo.splice(0,prgValueInfo.length);
-        openfile(nameArry);
-        prgValueInfo.sort(by(sortflag?"mem":"pid"));
-        updateDOM();
-    }, 1000);
-}
-function updateDOM() {
-    $("div").remove(".new");
-    prgValueInfo.forEach(function(item,index) {
-        //var table = document.getElementById("prgInfoTable");
-        var textMem = $('<div class = "col-xs-3 new"></div>').text(item.mem);
-        var textStatus = $('<div class = "col-xs-3 new"></div>').text(item.statu);
-        var textPID = $('<div class = "col-xs-3 new"></div>').text(item.pid);
-        var textName = $('<div class = "col-xs-3 new"></div>').text(item.pName);
-        //var prgItem = $('<div clsss = "tab-row"></div>').text(textName, textPID, textStatus, textMem);
-        $("#tab-title").after(textMem);
-        $("#tab-title").after(textStatus);
-        $("#tab-title").after(textPID);
-        $("#tab-title").after(textName);
-    });
-    var ppiidd = document.getElementById("pid");
-    ppiidd.onclick = function() {
-        sortflag = 0;
-    }
-    var mmeemm = document.getElementById("mem");
-    mmeemm.onclick = function() {
-        sortflag = 1;
-    }
-}
-calPrg();
-var by = function(name){
+var by = function(name, upordown){
     return function(o, p){
         var a, b;
         if (typeof o === "object" && typeof p === "object" && o && p) {
@@ -79,12 +43,77 @@ var by = function(name){
                 return 0;
             }
             if (typeof a === typeof b) {
-                return a < b ? -1 : 1;
+                if (upordown == 0) {
+                    return a < b ? -1 : 1;
+                } else {
+                    return a > b ? -1 : 1;
+                }
             }
-            return typeof a < typeof b ? -1 : 1;
+            if (upordown == 0) {
+                return typeof a < typeof b ? -1 : 1;
+            }
+            else {
+                return typeof a > typeof b ? -1 : 1;
+            }
         }
         else {
             throw ("error");
         }
     }
 }
+
+function calPrg() {
+    var nameArry = []
+    setInterval(function() {
+        nameArry.splice(0,nameArry.length);
+        nameArry = opendir();
+        count = 0;
+        prgValueInfo.splice(0,prgValueInfo.length);
+        openfile(nameArry);
+        prgValueInfo.sort(by(sortSelect, UorD));
+        updateDOM();
+    }, 1000);
+}
+function updateDOM() {
+    $("li").remove(".new");
+    prgValueInfo.forEach(function(item,index) {
+        var textMem = $('<div class = "col-xs-3 new"></div>').text(item.mem);
+        var textStatus = $('<div class = "col-xs-3 new"></div>').text(item.statu);
+        var textPID = $('<div class = "col-xs-3 new"></div>').text(item.pid);
+        var textName = $('<div class = "col-xs-3 new"></div>').text(item.pName);
+        var clrflt = $('<div class = "clear-float"></div>');
+
+        var newli = $('<li class = "new"></li>').append(textName, textPID, textStatus, textMem, clrflt);
+        $("#prgInfoTable").append(newli);
+    });
+    var ppiidd = document.getElementById("pid");
+    ppiidd.onclick = function() {
+        sortSelect = "pid";
+        UorD1 = !UorD1;
+        UorD = UorD1;
+    }
+    var mmeemm = document.getElementById("mem");
+    mmeemm.onclick = function() {
+        sortSelect = "mem";
+        UorD2 = !UorD2;
+        UorD = UorD2;
+    }
+    var nnaame = document.getElementById("pName");
+    nnaame.onclick = function() {
+        sortSelect = "pName";
+        UorD3 = !UorD3;
+        UorD = UorD3;
+    }
+    var ssttatu = document.getElementById("stu");
+    ssttatu.onclick = function() {
+        sortSelect = "statu";
+        UorD4 = !UorD4;
+        UorD = UorD4;
+    }
+}
+calPrg();
+//var ool = document.getElementsByTagName("ol");
+//ool.addEventListener("click",function(event){
+//    processInnderDiv(event.target);
+//},false);
+//console.log(typeof(ool.nodeName));

@@ -42,8 +42,11 @@ body {
 }
 
 .div-table {
+    list-style-type: none;
     max-height: 550px;
     overflow-y: auto;
+    margin: 0;
+    padding: 0;
 }
 
 .tab-pane>p {
@@ -93,7 +96,7 @@ body {
 .clear-float {
     clear: both;
 }
-.new {
+.div-table>li {
     line-height: 1.8em;
     border-bottom: 1px solid;
 
@@ -101,7 +104,10 @@ body {
     border-color: #36bd51;
     background-color: #eeeeee;
 }
-#pid:hover, #mem:hover {
+#pid:hover, #mem:hover, #pName:hover, #stu:hover {
     background-color: #34a853;
     cursor:pointer;
+}
+#pid, #mem, #pName, #stu {
+    transition: background 0.3s;
 }
