@@ -10,7 +10,7 @@ function creatWindow() {
         minWidth: 1100,
         resizable: true});
     mainWindow.loadURL(`file://${__dirname}/index.html`);
-//    mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
     mainWindow.setMenu(null);
     mainWindow.on('closed',() => {
         mainWindow = null;

@@ -73,6 +73,7 @@ function calPrg() {
         prgValueInfo.sort(by(sortSelect, UorD));
         updateDOM();
     }, 1000);
+    setTimeout("setBtnCik()",1000);
 }
 function updateDOM() {
     $("li").remove(".new");
@@ -112,8 +113,24 @@ function updateDOM() {
     }
 }
 calPrg();
-//var ool = document.getElementsByTagName("ol");
-//ool.addEventListener("click",function(event){
-//    processInnderDiv(event.target);
-//},false);
-//console.log(typeof(ool.nodeName));
+
+var exec = require('child_process').exec;
+var cmd0 = "kill ", cmd, pidd;
+function setBtnCik() {
+    var buttn = document.getElementById("btn")
+    buttn.onclick= killProcess;
+}
+function killProcess() {
+    pidd = document.getElementById("inpt");
+    if (pidd.value=="") {
+        alert("please input the pid");
+        return;
+    }
+    cmd = cmd0 + pidd.value;
+    exec(cmd,{encoding:'utf8'},function (err,stdout,stderr){
+        if (err){
+            console.log(err);
+            return;
+        }
+    });
+}

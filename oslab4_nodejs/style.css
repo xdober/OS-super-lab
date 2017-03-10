@@ -120,3 +120,15 @@ body {
 div::-webkit-scrollbar {
     width: 0;
 }
+#inpt {
+    width: 200px;
+    float: right;
+    height: 30px;
+}
+#btn {
+    width: 100px;
+    float: right;
+    height: 30px;
+    padding: 0;
+    background-color: #34a853;
+}
