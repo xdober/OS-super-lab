@@ -6,7 +6,9 @@ let mainWindow;
 function creatWindow() {
     mainWindow = new BrowserWindow({width: 1100,
         height: 640,
-        resizable: false});
+        minHeight: 640,
+        minWidth: 1100,
+        resizable: true});
     mainWindow.loadURL(`file://${__dirname}/index.html`);
 //    mainWindow.webContents.openDevTools();
     mainWindow.setMenu(null);
